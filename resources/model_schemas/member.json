@@ -37,9 +37,9 @@
     },
     {
         "name": "membertype",
-        "dbType": "string,6:nullable",
+        "dbType": "string,15:nullable",
         "htmlType": "text",
-        "validations": "nullable|string|max:6|nullable|string|max:6",
+        "validations": "nullable|string|max:15|nullable|string|max:15",
         "searchable": true,
         "fillable": true,
         "primary": false,
@@ -97,6 +97,14 @@
     },
     {
         "type": "relation",
-        "relation": "1tm,Booking,memberid"
+        "relation": "1tm,Sale,memberid"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,ServiceRequest,memberid"
+    },
+    {
+        "type": "relation",
+        "relation": "1tm,ServiceRequest,assigned_to_admin_id"
     }
 ]

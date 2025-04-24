@@ -97,7 +97,6 @@ return [
     |
     */
 
-    //'templates'         => 'adminlte-templates',
     'templates'         =>  base_path('vendor/eoinok/basic-template'),
 
     /*

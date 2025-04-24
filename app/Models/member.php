@@ -9,9 +9,11 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 /**
  * Class member
  * @package App\Models
- * @version April 8, 2025, 6:52 pm UTC
+ * @version April 24, 2025, 3:09 pm UTC
  *
- * @property \Illuminate\Database\Eloquent\Collection $bookings
+ * @property \Illuminate\Database\Eloquent\Collection $sales
+ * @property \Illuminate\Database\Eloquent\Collection $serviceRequests
+ * @property \Illuminate\Database\Eloquent\Collection $serviceRequest1s
  * @property string $firstname
  * @property string $surname
  * @property string $membertype
@@ -61,7 +63,7 @@ class member extends Model
     public static $rules = [
         'firstname' => 'nullable|string|max:30',
         'surname' => 'nullable|string|max:30',
-        'membertype' => 'nullable|string|max:6',
+        'membertype' => 'nullable|string|max:15',
         'dateofbirth' => 'nullable',
         'created_at' => 'nullable',
         'updated_at' => 'nullable',
@@ -71,8 +73,24 @@ class member extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/
-    public function bookings()
+    public function sales()
     {
-        return $this->hasMany(\App\Models\Booking::class, 'memberid');
+        return $this->hasMany(\App\Models\Sale::class, 'memberid');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function serviceRequests()
+    {
+        return $this->hasMany(\App\Models\ServiceRequest::class, 'memberid');
+    }
+
+    /**
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     **/
+    public function serviceRequest1s()
+    {
+        return $this->hasMany(\App\Models\ServiceRequest::class, 'assigned_to_admin_id');
     }
 }

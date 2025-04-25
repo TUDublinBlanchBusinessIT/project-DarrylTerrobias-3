@@ -22,10 +22,14 @@ class UpdatememberRequest extends FormRequest
      *
      * @return array
      */
+    
     public function rules()
     {
         $rules = member::$rules;
-        
+    
+        $rules['membertype'] = 'required|in:customer,manager,admin,technician';
+    
         return $rules;
     }
+    
 }

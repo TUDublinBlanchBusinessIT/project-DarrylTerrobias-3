@@ -78,6 +78,13 @@ class member extends Model
         return $this->hasMany(\App\Models\Sale::class, 'memberid');
     }
 
+
+    public function __toString()
+    {
+        return $this->firstname . ' ' . $this->surname;
+    }
+
+
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      **/

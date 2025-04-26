@@ -2,7 +2,6 @@
 
 namespace App\Models;
 
-<<<<<<< HEAD
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,25 +36,10 @@ class ServiceRequest extends Model
 
 
     public $fillable = [
-=======
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-class ServiceRequest extends Model
-{
-    use HasFactory;
-
-    protected $table = 'service_request'; // matches your SQL table name
-
-    public $timestamps = false; // unless you are auto-managing created_at/updated_at
-
-    protected $fillable = [
->>>>>>> f56ec654537d400ed7c8f160e0cfe21264f8b8f2
         'memberid',
         'device_description',
         'issue_reported',
         'status',
-<<<<<<< HEAD
         'assigned_to_admin_id'
     ];
 
@@ -104,10 +88,4 @@ class ServiceRequest extends Model
     {
         return $this->belongsTo(\App\Models\Member::class, 'assigned_to_admin_id');
     }
-=======
-        'assigned_to_admin_id',
-        'created_at',
-        'updated_at',
-    ];
->>>>>>> f56ec654537d400ed7c8f160e0cfe21264f8b8f2
 }

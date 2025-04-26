@@ -24,6 +24,8 @@ class CreatememberRequest extends FormRequest
      */
     public function rules()
     {
-        return member::$rules;
+        return array_merge(member::$rules, [
+            'membertype' => 'required|in:customer,manager,admin,technician',
+        ]);
     }
 }

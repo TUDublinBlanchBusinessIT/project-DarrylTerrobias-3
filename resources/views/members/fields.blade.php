@@ -12,9 +12,15 @@
 
 <!-- Membertype Field -->
 <div class="form-group col-sm-6">
-    {!! Form::label('membertype', 'Membertype:') !!}
-    {!! Form::text('membertype', null, ['class' => 'form-control']) !!}
+    {!! Form::label('membertype', 'Member Type:') !!}
+    {!! Form::select('membertype', [
+        'customer' => 'Customer',
+        'manager' => 'Manager',
+        'admin' => 'Admin',
+        'technician' => 'Technician'
+    ], null, ['class' => 'form-control', 'placeholder' => 'Select Member Type']) !!}
 </div>
+
 
 <!-- Dateofbirth Field -->
 <div class="form-group col-sm-6">

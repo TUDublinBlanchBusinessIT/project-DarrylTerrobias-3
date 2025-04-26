@@ -6,3 +6,11 @@
 </li>
 
 
+<li class="nav-item">
+    <a href="{{ route('serviceRequests.index') }}"
+       class="nav-link {{ Request::is('serviceRequests*') ? 'active' : '' }}">
+        <p>Service Requests</p>
+    </a>
+</li>
+
+

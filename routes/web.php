@@ -19,3 +19,7 @@ Route::get('/', function () {
 
 
 Route::resource('members', App\Http\Controllers\memberController::class);
+
+
+Route::resource('service_requests', App\Http\Controllers\ServiceRequestController::class);
+

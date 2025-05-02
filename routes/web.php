@@ -32,3 +32,6 @@ Route::get('/service-requests', [ServiceRequestController::class, 'index'])->nam
 
 
 
+
+
+Route::resource('products', App\Http\Controllers\ProductController::class);

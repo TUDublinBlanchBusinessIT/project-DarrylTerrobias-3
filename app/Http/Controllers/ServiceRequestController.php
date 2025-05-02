@@ -102,22 +102,27 @@ class ServiceRequestController extends AppBaseController
      *
      * @return Response
      */
-    
+
     public function edit($id)
     {
-        $serviceRequest = $this->serviceRequestRepository->find($id);
-    
-        if (empty($serviceRequest)) {
-            Flash::error('Service Request not found');
-            return redirect(route('service_requests.index'));
-        }
-    
-        // Proper pluck (no CONCAT)
-        $customers = \App\Models\Member::where('membertype', 'customer')->pluck('firstname', 'id');
-        $admins = \App\Models\Member::whereIn('membertype', ['admin', 'manager'])->pluck('firstname', 'id');
-    
-        return view('service_requests.edit', compact('serviceRequest', 'customers', 'admins'));
+    $serviceRequest = $this->serviceRequestRepository->find($id);
+
+    if (empty($serviceRequest)) {
+        Flash::error('Service Request not found');
+        return redirect(route('service_requests.index'));
     }
+
+    $customers = \App\Models\Member::where('membertype', 'customer')
+        ->selectRaw('id, CONCAT(firstname, " ", surname) as fullname')
+        ->pluck('fullname', 'id');
+
+    $admins = \App\Models\Member::whereIn('membertype', ['admin', 'manager', 'technician'])
+        ->selectRaw('id, CONCAT(firstname, " ", surname) as fullname')
+        ->pluck('fullname', 'id');
+
+    return view('service_requests.edit', compact('serviceRequest', 'customers', 'admins'));
+    }
+
     
     
 
